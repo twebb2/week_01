@@ -7,28 +7,6 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This assignment is meant to reinforce our learnings from the first week of class while also providing additional background and support for using git.
-
-We will be using GitHub for submitting assignments. We will review assignment submission during our second class. You will submit this assignment at that time.
-
-#### Textbook
-
--   Review from this past week:
-    -   [Chapter 2 - Explore Introduction](https://r4ds.had.co.nz/explore-intro.html)
-    -   [Chapter 4 - Workflow Basics](https://r4ds.had.co.nz/workflow-basics.html)
-    -   [Chapter 6 - Workflow: scripts](https://r4ds.had.co.nz/workflow-scripts.html)
-
--   Prepare for next week:
-    -   [Chapter 3 - Data visualization](https://r4ds.had.co.nz/data-visualisation.html)
-
-#### Additional Readings
-
--   [*Happy Git and GitHub for the useR*](https://happygitwithr.com/)
-
-    -   Chapter 1
-    -   Chapters 4-7
-    -   Chapters 9-14
-
 #### Exercises
 
 1.  Explain coercion rules. Create an example that demonstrates the fixed order of the coercion rules.
