@@ -13,17 +13,21 @@ We will be using GitHub for submitting assignments. We will review assignment su
 
 #### Textbook
 
--   Chapter 1 - Introduction
--   Chapter 4 - Workflow Basics
--   Chapter 6 - Workflow: scripts
+-   Review from this past week:
+    -   [Chapter 2 - Explore Introduction](https://r4ds.had.co.nz/explore-intro.html)
+    -   [Chapter 4 - Workflow Basics](https://r4ds.had.co.nz/workflow-basics.html)
+    -   [Chapter 6 - Workflow: scripts](https://r4ds.had.co.nz/workflow-scripts.html)
+
+-   Prepare for next week:
+    -   [Chapter 3 - Data visualization](https://r4ds.had.co.nz/data-visualisation.html)
 
 #### Additional Readings
 
-*Happy Git and GitHub for the useR*
+-   [*Happy Git and GitHub for the useR*](https://happygitwithr.com/)
 
--   Chapter 1
--   Chapters 4-7
--   Chapters 9-14
+    -   Chapter 1
+    -   Chapters 4-7
+    -   Chapters 9-14
 
 #### Exercises
 
@@ -38,8 +42,6 @@ We will be using GitHub for submitting assignments. We will review assignment su
 ```{r}
 as.integer(c("one", "two", "three"))
 ```
-
-
 
 3.  Create a vector of a sequence of integers starting at 2, ending at 100, and increasing by 2. Assign the vector to an object called `evens`. Coerce the vector to be of type `integer`. Confirm that the vector is of type `integer`.
 
@@ -73,13 +75,10 @@ as.integer(c("one", "two", "three"))
 
 8.  We discussed the idea that R is a "vectorized" language. Explain this concept. Why is it important?
 
-
-
 9.  Run the `sessionInfo` function in a chunk.
 
 ```{r}
 
 ```
-
 
 10. Follow the steps outlined in chapter 6-7 and 9-14 of *Happy Git and GitHub for the useR* in order to finish setting up git on your local machine and connecting your local machine to your GitHub account. Utilize the Slack channel `#help_git` if you run into any issues.
