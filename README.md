@@ -19,7 +19,7 @@ In the first week of the course, we discuss the basics of the R programming lang
 | Display grade as: | Points                        |
 | Submission type:  | Via Github                    |
 | Due date:         | October 4, 2021, during class |
-| Available from:   | September 27, 12:00 am        |
+| Available from:   | September 27, 2021, 12:00 am  |
 | Until:            |                               |
 
 Complete all questions in the `Week_01_Assignment.Rmd` file.
@@ -28,7 +28,7 @@ Complete all questions in the `Week_01_Assignment.Rmd` file.
 2.  Clone the repository to your local machine.
 3.  Answer questions in the `Week_01_Assignment.Rmd` file.
 4.  Push your final code to the remote repository.
-5.  Add @rharrington31 as a collaborator in the remote repository.
+5.  Add \@rharrington31 as a collaborator in the remote repository.
 6.  Create an issue to indicate you're done.
 
 ## Readings
