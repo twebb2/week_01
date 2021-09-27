@@ -58,5 +58,3 @@ as.integer(c("one", "two", "three"))
 ```{r}
 
 ```
-
-10. Follow the steps outlined in chapter 6-7 and 9-14 of *Happy Git and GitHub for the useR* in order to finish setting up git on your local machine and connecting your local machine to your GitHub account. Utilize the Slack channel `#help_git` if you run into any issues.
