@@ -88,7 +88,7 @@ class: content-slide
 # Hi, I'm Ryan `r emo::ji("wave")`
 
 .pull-left[
-<img src="images/ryan.jpg" 
+<img src="images/Ryan.jpg" 
 class="rounded-corners" 
 style="width:400px;
 height:400px" 
