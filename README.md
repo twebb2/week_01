@@ -15,7 +15,7 @@ In the first week of the course, we discuss the basics of the R programming lang
 
 |                   |                               |
 |-------------------|-------------------------------|
-| Points:           | 5                             |
+| Points:           | 10                            |
 | Display grade as: | Points                        |
 | Submission type:  | Via Github                    |
 | Due date:         | October 4, 2021, during class |
