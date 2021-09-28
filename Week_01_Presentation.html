@@ -1,0 +1,1994 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Foundations of R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Ryan Harrington" />
+    <meta name="date" content="2021-09-27" />
+    <script src="Week_01_Presentation_files/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+
+class: animated, fadeIn, content-slide
+layout: true
+
+---
+
+class: title-slide, middle
+layout: false
+
+# Foundations of R for Data Analysis
+
+### Week 01: Understanding the R Programming Environment
+
+Ryan Harrington&lt;br&gt;
+September 27, 2021&lt;br&gt;
+University of Delaware&lt;br&gt;
+College of Professional &amp; Continuing Studies
+
+
+---
+
+class: content-slide
+
+# Hi, I'm Ryan 👋
+
+.pull-left[
+&lt;img src="images/ryan.jpg" 
+class="rounded-corners" 
+style="width:400px;
+height:400px" 
+alt="Ryan Harrington"&gt;
+]
+
+.pull-right[
+### Delaware Data Innovation Lab
+Associate Director, Stategy &amp; Operations
+
+### CompassRed
+Lead Data Scientist
+
+### Open Data Delaware
+Co-founder, Co-organizer
+]
+
+---
+
+class: content-slide
+
+# Course Goals
+
+&gt; In this course, students will learn to utilize the R programming language in order to perform data analysis in a work context. They will understand how to perform an exploratory data analysis with a focus on the tidyverse. In addition, students will understand tools that are necessary to perform these analyses in the workplace including git and R Markdown.
+
+---
+
+class: content-slide
+
+# Course Goals
+
+&gt; In this course, students will learn to utilize the R programming language in order to perform data analysis in a work context. They will understand how to perform an .text-highlight[exploratory data analysis with a focus on the tidyverse]. In addition, students will understand tools that are necessary to perform these analyses in the workplace including git and R Markdown.
+
+--
+
+&lt;br&gt;
+.center[&lt;img src="https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png", alt="Data Science Workflow" style="width:750px"&gt;]
+
+---
+
+class: content-slide
+
+# Course Goals
+
+&gt; In this course, students will learn to utilize the R programming language in order to perform data analysis in a work context. They will understand how to perform an exploratory data analysis with a focus on the tidyverse. In addition, students will understand tools that are necessary to .text-highlight[perform these analyses in the workplace including git] and R Markdown.
+
+--
+
+.pull-left[&lt;br&gt;&lt;br&gt;&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/1280px-Git-logo.svg.png" alt="Git logo" style="width:400px" class="center"&gt;]
+
+.pull-right[&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;img src="https://GitHub.GitHubassets.com/images/modules/logos_page/GitHub-Logo.png" alt="GitHub logo" style="width:400px;" class="center"&gt;]
+
+---
+class: content-slide
+
+# Weekly Topics
+.pull-left[
+1.    Understanding the R Programming Environment
+
+2.    Introduction to Exploratory Data Analysis
+
+3.    Introduction to the tidyverse
+
+4.    Data cleaning tools
+
+5.    Joining &amp; Reshaping Datasets
+
+6.    Creating Functions
+
+7.    Manipulation of Strings, Factors, and Datetimes
+
+8.    Functional Programming]
+
+.pull-right[
+&lt;img src="https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png", alt="Data Science Workflow" style="width:100%"&gt;
+]
+
+---
+
+class: content-slide
+
+# Course Syllabus
+
+You can read the full course syllabus [here](https://udel.instructure.com/courses/1595325/assignments/syllabus).
+
+Key things we'll cover:
+
+- Expectations
+
+- Grading
+
+- Project
+
+- Systems
+
+---
+
+class: content-slide
+
+# Course Syllabus
+
+## Expectations
+
+--
+
+-   **Attendance is required for this course.** However, if you're going to miss a session, please let me know. There will be a recording made available for you to review. This will allow you to still receive credit for your attendance.
+
+--
+
+-   **We'll always get started at exactly 6:00 pm.**
+    -   We'll take a **15 minute break** approximately halfway through each week's session based upon when we reach a convenient stopping point.
+    -   We'll **wrap up at 9:15 pm** each evening.
+
+--
+
+-   **Keep your videos on!**
+
+---
+
+class: content-slide
+
+# Course Syllabus
+
+## Grading
+
+<div id="ayxqpqvslr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: Roboto;
+}
+
+#ayxqpqvslr .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ayxqpqvslr .gt_heading {
+  background-color: #006096;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ayxqpqvslr .gt_title {
+  color: #FFFFFF;
+  font-size: 125%;
+  font-weight: bold;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ayxqpqvslr .gt_subtitle {
+  color: #FFFFFF;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ayxqpqvslr .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ayxqpqvslr .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ayxqpqvslr .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ayxqpqvslr .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ayxqpqvslr .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ayxqpqvslr .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ayxqpqvslr .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ayxqpqvslr .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ayxqpqvslr .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ayxqpqvslr .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ayxqpqvslr .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ayxqpqvslr .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ayxqpqvslr .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#ayxqpqvslr .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ayxqpqvslr .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#ayxqpqvslr .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ayxqpqvslr .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ayxqpqvslr .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ayxqpqvslr .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ayxqpqvslr .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ayxqpqvslr .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#ayxqpqvslr .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ayxqpqvslr .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#ayxqpqvslr .gt_left {
+  text-align: left;
+}
+
+#ayxqpqvslr .gt_center {
+  text-align: center;
+}
+
+#ayxqpqvslr .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ayxqpqvslr .gt_font_normal {
+  font-weight: normal;
+}
+
+#ayxqpqvslr .gt_font_bold {
+  font-weight: bold;
+}
+
+#ayxqpqvslr .gt_font_italic {
+  font-style: italic;
+}
+
+#ayxqpqvslr .gt_super {
+  font-size: 65%;
+}
+
+#ayxqpqvslr .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table" style="table-layout: fixed;; width: 0px">
+  <colgroup>
+    <col style="width:150px;"/>
+    <col style="width:250px;"/>
+    <col style="width:75px;"/>
+  </colgroup>
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Assessment</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Points</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Percent</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">Attendance</td>
+<td class="gt_row gt_left">40 points (5 points/week)</td>
+<td class="gt_row gt_right">25&percnt;</td></tr>
+    <tr><td class="gt_row gt_left">Assignments</td>
+<td class="gt_row gt_left">80 points (10 points/assignment)</td>
+<td class="gt_row gt_right">50&percnt;</td></tr>
+    <tr><td class="gt_row gt_left">Project</td>
+<td class="gt_row gt_left">40 points (for one project)</td>
+<td class="gt_row gt_right">25&percnt;</td></tr>
+    <tr><td class="gt_row gt_left">Total</td>
+<td class="gt_row gt_left">160 points total</td>
+<td class="gt_row gt_right">100&percnt;</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+
+---
+
+class: content-slide
+
+# Course Syllabus
+
+## Project
+
+25% of your grade will come from the completion of a project.
+
+-   Due one week after your last class, 11/22/21
+-   Completed individually
+
+You will select your own dataset(s), generate a question that you want to answer, and complete the analysis using R.
+
+The final output will be as a knitted HTML file hosted via GitHub pages.
+
+---
+
+class: content-slide
+
+# Course Syllabus
+
+## Systems
+
+**Canvas**
+-   Grades
+-   Course documents
+-   Recordings
+
+**GitHub**
+-   Assignments posted
+-   Assignment submissions
+
+**Slack**
+-   Course communication
+---
+
+class: content-slide, middle
+
+.center[# Who is in this course?]
+
+---
+
+class: content-slide
+
+# Who is in this course?
+
+&lt;img src="Week_01_Presentation_files/figure-html/unnamed-chunk-2-1.png" title="Bubble chart demonstratign skill level of participants in the Foundations of R course" alt="Bubble chart demonstratign skill level of participants in the Foundations of R course" width="100%" /&gt;
+
+
+---
+
+class: title-slide, middle, center
+layout: false
+
+# R was invented by statisticians,&lt;br&gt; for statisticians
+
+---
+
+class: content-slide
+
+# How do you learn to program?
+
+--
+### Focus on identifying projects thats you care about
+The work becomes much more meaningful to solve when you have specific questions that you're focused on answering. Also, if you're looking for a new job, it helps you to build a portfolio.
+
+--
+### Identify and develop a community to support you
+One of R's strengths is its community. There are a lot of places you can find one - from Twitter to Slack. We'll build one in our classroom via Slack that extends beyond our time in the classroom together.
+
+--
+## Learn how to ask for help
+It's challenging to know what to do when you encounter an error or a warning as you first get started. Every issue that you have to solve is a new issue. We'll aim to explicitly teach how to Google your way out of issues throughout this course.
+---
+
+class: content-slide
+
+# Why R?
+
+.pull-left[
+## Strengths
+-   Free &amp; Open Source philosophy (originally [GNU General Public License](https://www.r-project.org/Licenses/))
+
+-   Strong graphics and visualization capabilities
+
+-   Historically strong community
+]
+
+.pull-right[
+## Weaknesses
+-   Different paradigms from other programming languages (indexing at 1)
+
+-   Memory hog
+
+-   No particular group is in charge of development across R 
+]
+
+---
+
+class: content-slide
+
+# A Magical Partnership
+
+.pull-left[&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/1448px-R_logo.svg.png" alt="R Logo" style="height:100px;" class="center"&gt;
+
+## The Language
+
+-   Can be run independently of any other computer program
+-   R may be used without RStudio]
+
+.pull-right[&lt;img src="https://d33wubrfki0l68.cloudfront.net/1ac3f0e3753f18c7e2a8893957d1841fba1e3d08/48a33/wp-content/uploads/2018/10/rstudio-logo-flat.png" alt="R Studio Logo" style="height:100px" class="center"&gt;
+
+## The IDE
+
+-   A development environment designed to be used alongside R
+-   RStudio may not be used without R]
+
+---
+
+class: content-slide
+
+# The RStudio Environment
+
+.center[&lt;img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/RStudio_IDE_screenshot.png" alt="RStudio Example" class="rounded-corners" style="width:600px"&gt;]
+
+---
+
+class: content-slide
+
+# Creating your first file
+
+## R Scripts vs RMarkdown
+
+For our course, we'll be primarily working with **RMarkdown** files.
+
+-   R scripts and RMarkdown files can both run the same code
+-   R scripts (file extension: `.R`) are great for building code that is part of a larger system
+-   RMarkdown files (file extension: `.Rmd`) are great for creating reports. This presentation is created with RMarkdown. They allow narrative, code, and output to be intermingled.
+
+---
+
+class: content-slide
+
+## Parts of a RMarkdown file
+
+.pull-left[
+-   **YAML Header**
+    -   Only occurs once at the top of the document
+    -   Allows you to specify metadata and dictate document-wide formatting options
+
+-   **Markdown**
+    -   Text that is not evaluated as code
+    -   Basic formatting of text is possible, from **bolding** and *italicizing* text to utilizing lists
+    -   It is possible to include `code` inline with the markdown that will be evaluated when the document is “knit". For example: 2021-09-27]
+
+.pull-right[
+-   **Code Chunks**
+    -   Actual code
+    -   Each chunk can be evaluated independently
+    -   It is possible to use a variety of languages beyond R in the chunks
+
+-   **Output**
+    -   Output from the code chunks are included immediately below the chunk
+    -   This allows for easier exploration]
+
+---
+
+class: content-slide
+
+# Basic Functionality
+
+## Creating a chunk
+
+"Chunks" are where we write executable code in an R Markdown file. You can insert a chunk in one of several ways:
+
+-   Click the green &lt;img src="https://d33wubrfki0l68.cloudfront.net/b8b19518e688e3ca1390e0a1588916f04908d33f/8a4dc/images/notebook-insert-chunk.png" alt="Insert chunk button"&gt; button in the source pane
+-   Go to `Code &gt; Insert chunk`
+-   Use the shortcut `option + command + i`
+
+
+
+
+Chunks will always be surrounded by three back tick marks. The type of code that will be run in the chunk will be designated inside of the `{}`. In this course, we will always utilize `r`, though many other options are available (but not as feature rich as R). It is always required to include the language for the chunk.
+
+Inside the `{}`, you can specify other information as well. For example, we can name our chunk. We can also provide options for how the chunk should be handled when we knit the document. We'll talk about that more later. Here are some examples:
+
+---
+
+class: content-slide
+
+# Using R as a calculator
+
+One of the absolute most basic functions for R is to use it as a calculator. You can perform all of the basic functions that you might expect to with R - from addition to division. Insert a new chunk. Let's start with some basic addition.
+
+There are **many** ways which you can execute your code.
+
+Here are two:
+
+-   Run the full chunk by pressing the green arrow
+-   Run the full chunk by using the short cut `command + shift + enter`
+
+
+```r
+2 + 4
+```
+
+--
+
+It is a best practice in R to include spaces around operators. It dramatically increases the readability of your code. Your code will still execute without spaces, though.
+
+
+```r
+1-4
+```
+
+---
+
+class: content-slide
+
+# Using R as a calculator
+
+All of your other operators work as you'd expect:
+
+-   `+` for addition
+-   `-` for subtraction
+-   `*` for multiplication
+-   `/` for division
+-   `()` for...parentheses
+
+Notice what the output look like when you run the whole chunk.
+
+
+```r
+7 * 2
+9 / 3
+8 + 4 - 3
+6 / (1 + 2)
+```
+
+---
+
+class: content-slide
+
+# Running Code
+
+We can our code in many ways besides simply running the full chunk.
+
+-   We can run a single line by using `command + enter`
+
+-   We can run an arbitrary amount of code by highlighting or "painting" the relevant code. That could mean:
+
+    -   A single line
+    -   Multiple lines
+    -   A portion of a line
+
+
+```r
+7 * 2
+9 / 3
+8 + 4 -3
+6 / (1 + 2)
+```
+
+---
+
+class: content-slide
+
+# Commenting code
+
+One of the most valuable things that you can do with your code is to leave comments throughout it. These serve as notes for other people reading your code to understand your work...including **future you**.
+
+In R, we comment by using the `#` symbol. Anything following a `#` is considered a comment and is not executed.
+
+
+```r
+# I am a comment
+# This text will not be executed
+
+3 + 7
+# 3 + 7
+3 + 7 # here's a comment as well
+```
+
+---
+
+class: content-slide
+
+# Logical conditions (Booleans)
+
+In order to build scripts in the future you will need to understand how to utilize logical conditions. Logical conditions will evaluate to `TRUE` or `FALSE`.
+
+There are many ways to evaluate logical conditions, but we can start with some basics - tests of inequality or equality.
+
+--
+
+
+```r
+3 &lt; 5
+
+# When writing &gt;= or &lt;=, the equal sign always follows the symbol
+4 &gt;= 6
+
+# This will give you an error. Why?
+4 =&gt; 6
+
+# Note that when evaluating equivalency, we utilize two equal signs
+1 == 2
+
+7 ^ 2 &gt;= 2 ^ 6 - 4 ^ 2
+```
+
+---
+
+class: content-slide
+
+# Object assignment
+
+Another fundamental skill you need to understand is how to assign values to objects. By assigning values to objects, we can recall them later.
+
+To do this, we utilize `&lt;-`
+
+
+```r
+value &lt;- 6 + 3
+```
+
+Notice that there is no output when we run this chunk. Let's go check our Environment pane to see what happened, though.
+
+Notice that an object called `value` is now included in our environment. That means that we are able to re-use the object for future calculations. The Environment pane includes some helpful metadata about our newly created object including:
+
+-   Name
+-   Type
+-   Length
+-   Size
+-   Value
+
+---
+
+class: content-slide
+
+# Object assignment
+
+We can now use our newly created object `value`.
+
+
+```r
+value + 3
+
+value ^ 2
+
+value / 3 == sqrt(value)
+```
+
+---
+
+class: content-slide
+
+# Object assignment
+
+While in most cases in `R`, adding in spaces will not impact the executability of our code, this is one specific instance where we need to be very careful with our spacing. Observe what happens now.
+
+
+```r
+# Underscores and periods are valid for naming!
+new_value &lt; - 8 - 7
+```
+
+```
+## Error in eval(expr, envir, enclos): object 'new_value' not found
+```
+
+--
+
+Consider what is happening with this error. `R` does not recognize that there should be an assignment operator being used due to the space between the `&lt;` and the `-`. Instead of viewing them together as `&lt;-`, the `R` compiler is viewing each separately and trying to evaluate the `&lt;` as a logical operator and `-` for subtraction. Because there is no assignment arrow, `R` searches the environment for an object named `new_value`, which, of course, does not exist. That leads to our error.
+
+You'll note that this is fixed by simply removing the space between `&lt;` and `-`.
+
+
+```r
+new_value &lt;- 8 - 7
+```
+
+---
+
+class: content-slide
+
+# Object assignment
+
+`&lt;-` is not the only valid way of assigning objects in your global environment. The `=` symbol is an equivalent way of assigning objects, but it is not considered a best practice to utilize it. Note that this will work:
+
+
+```r
+# Yes, you can begin names of objects with a period
+# There is no difference between objects that have names that start with periods
+# and those that don't, however, it is somewhat uncommon.
+.a_really_new_value = 8.675309
+```
+
+We can put this all together, quite literally.
+
+
+```r
+value - new_value + .a_really_new_value
+```
+
+---
+
+class: content-slide
+
+## Creating vectors with the : operator
+
+We are rarely going to work with single numbers in the way that we have so far. Rather, we are likely to work with **many** numbers.
+
+A simple way to start doing that is with the colon operator, `:`. The `:` operator will generate the numbers `from:to`.
+
+
+```r
+1:10
+
+21:72
+
+10:1
+
+-3:-8
+```
+
+--
+
+Just like with operations, we can store these values to objects for use later.
+
+
+```r
+top_ten &lt;- 1:10
+
+top_ten_reversed &lt;- 10:1
+```
+
+---
+
+class: content-slide
+
+# Concept: Operations are vectorized
+
+Why is this useful?
+
+Because now we can perform operations on **all of these numbers at the same time**.
+
+
+```r
+top_ten - 8
+
+top_ten / 2
+
+top_ten == 8
+```
+
+--
+
+This leads us to a major takeaway. `R` is considered a **vectorized** programming language. It was written to excel at performing the same operation on many values simultaneously. 
+
+In other programming languages, like Python, the task of subtracting 8 from every number in a list is less straightforward. In R, this is extremely simple.
+
+---
+
+class: content-slide
+
+# Built-in Functions
+
+So far we have utilized extremely basic operators to do our work. `R` has many more complicated functions built in, though.
+
+Functions are pre-written code that you can utilize to make your work easier. We'll be using many, many functions throughout this course. Later on, we'll be writing our own functions.
+
+We'll start with some simple functions that you can utilize for calculator purposes.
+
+
+```r
+# Take the square root of a number
+sqrt(3)
+
+# Take the absolute value of a number
+abs(-2)
+```
+
+---
+
+class: content-slide
+
+# Built-in Functions
+
+These, of course, can also work with lists.
+
+
+```r
+sqrt(top_ten)
+
+# This one is maybe a little bit boring...
+abs(top_ten)
+
+# All of your basic stats...
+mean(top_ten)
+median(top_ten)
+min(top_ten)
+max(top_ten)
+sd(top_ten)
+var(top_ten)
+```
+
+---
+
+class: content-slide
+
+### ?, help, and Vignettes
+
+You are absolutely not expected to know every function and how it works. For that reason, one of the most important tools in your toolset is **documentation**. You can find documentation in many places, but the easiest place to find it is right in your console.
+
+The page where your documentation is listed is referred to as a **vignette**. 
+-   Vignettes include all of the information that you need in order to utilize a function
+-   The fastest way to access your vignette is by using `?`
+-   Use the `?` immediately before the name of the function that you want to learn more about
+
+Let's see what the vignette looks like for the `mean` function. We can do this by typing `?mean` into our console.
+
+
+```r
+?mean
+```
+
+It is equivalent to type `help("mean")` as well.
+
+
+```r
+help(mean)
+```
+
+---
+
+class: content-slide
+
+# Creating vectors with the `c` operator
+
+The `:` operator is excellent for creating sequences of numbers that increase or decrease by 1. We may want to create a sequence of numbers that are not sequential though. For that, we can use the `c` function.
+
+
+```r
+lost_numbers &lt;- c(4, 8, 15, 16, 23, 42)
+
+jennys_number &lt;- c(8, 6, 7, 5, 3, 0, 9)
+
+transcendental_numbers &lt;- c(pi, 1.618, 2 * pi, 2.718)
+```
+
+---
+
+class: content-slide
+
+# Creating vectors with the `c` operator
+
+We are not limited to combining individual numbers. We can also add in sequences. For example:
+
+
+```r
+new_sequence &lt;- c(1:10, 8, 6, 7 , 5, 3, 0, 9)
+```
+
+--
+
+Unsurprisingly, we can also combine previously defined sequences of numbers using the `c` function.
+
+
+```r
+all_sequences &lt;- c(lost_numbers, transcendental_numbers, top_ten)
+```
+
+--
+
+It is important to note that the `c` operator coerces all of the objects in our vector to have the same type. You'll notice that all of the numbers include decimals - even those that are integers. The documentation for `c` gives more details about this behavior. We'll also discuss this in more depth later.
+
+---
+
+class: content-slide
+
+# Function Arguments
+
+So far, we have worked with a few simple functions. These have been relatively simple to work with so far. For example, we worked with `mean` by passing a list of numbers to it and it performs the calculation for us, like so: `mean(all_sequences)`.
+
+For many functions, we need to specify additional **arguments** that tell the function what we want it to do. Sometimes these are required. Sometimes they are optional. Sometimes they have default values. Sometimes we need to supply our own values.
+
+---
+
+class: content-slide
+
+# Function Arguments
+
+Let's explore this by looking at the `seq` function.
+
+This function does exactly what you think it might do based upon the name. It generates a sequence of numbers. We have done this already with the `:` operator, but we were limited to sequences of numbers that increase or decrease by 1. The `seq` function provides us with more flexible options.
+
+---
+
+class: content-slide
+
+# Function Arguments
+
+Let's see how by pulling up the vignette for the `seq` function.
+
+First, let's zero in on the *Arguments* section of the vignette. Arguments are your way of communicating with a function to tell it what to do. These are the inputs that allow you to change your function outputs.
+
+The arguments section of a vignette provides a description for each argument and how to use it. For `seq`, there are 5 arguments:
+
+-   `from`
+-   `to`
+-   `by`
+-   `length.out`
+-   `along.with`
+
+You'll also notice the `...` argument. This is a special argument that is used in many functions. We'll spend more time talking about this later in the course. For now, we'll concentrate on the other arguments in `seq`.
+
+---
+
+class: content-slide
+
+# Function Arguments
+
+If you take a look back at the *Usage* section of the vignette. This tells us the default values that are being provided to the function.
+
+```
+seq(from = 1, to = 1, by = ((to - from)/(length.out - 1)), length.out = NULL, along.with = NULL, ...)
+```
+
+Notice that the `from` and `to` arguments default to `1`. The `by` argument has a formula detailing it's default. The `length.out` and `along.with` arguments are `NULL` by default.
+
+Let's start using these arguments to get an understanding of how functions work.
+
+---
+
+class: content-slide
+
+# Function Arguments
+
+First, we can use `seq` exactly like the `:` operator.
+
+
+```r
+seq(2, 10)
+```
+
+Notice that we did not specify any argument names here. If we do not specify argument names, then `R` interprets them in the order of the arguments.
+
+-   `from` is the first argument for `seq`, so `2` is interpreted as the value for `from`
+-   `to` is the second argument for `seq`, so `10` is interpreted as the value for `to`
+
+---
+
+class: content-slide
+
+# Function Arguments
+
+We did not have to specify values for anything else. `R` used the default values for those arguments in order to generate the sequence.
+
+I typically prefer to be explicit about which arguments I am using, particularly when creating scripts that will be shared with others. Even when not sharing my script with others, explicitly naming my arguments often helps future me remember what my code does.
+
+This is equivalent to our previous code, except it explicitly names the arguments.
+
+
+```r
+seq(from = 2, to = 10)
+```
+
+```
+## [1]  2  3  4  5  6  7  8  9 10
+```
+
+Our output is, as expected, exactly the same.
+
+---
+
+class: content-slide
+
+# Function Arguments
+
+As we mentioned, when we explicitly name arguments, we are not beholden to the order that the arguments are listed in by default. For example, notice that when we reverse the order of `from` and `to`, we end up with the same output.
+
+
+```r
+seq(to = 10, from = 2)
+```
+
+--
+
+We can change our output by changing additional arguments. For example, perhaps we want our sequence to increase by `2` instead of by `1`. We can make use of the `by` argument to do this.
+
+
+```r
+seq(from = 2, to = 10, by = 2)
+```
+
+The `seq` function has many different usages. Read the vignette to get a better understanding for what it is able to do. There are several related functions to `seq` that are essentially just specialized versions of it. They have been optimized for specific use cases and, therefore, are very useful when you come across those specific situations.
+
+---
+
+class: content-slide
+
+# Data types
+
+So far, we've worked with a variety of numbers in our exercises. There are different *kinds* of numbers, though. Beyond that, we may not always work with numbers. There are 6 basic data types. In this course, we'll use 4 of the data types consistently. In fact, we've already touched on 3 of them. The six data types are:
+
+-   Numeric (doubles)
+
+-   Numeric (integers)
+
+-   Logical
+
+-   Character
+
+-   Complex
+
+-   Raw
+
+Beyond these six data types, there are a bevy of other data types that you'll be introduced to. These additional data types are all, ultimately, built on top of the six presented here.
+
+---
+
+class: content-slide
+
+# Data types
+
+## Numeric (doubles)
+
+We have worked with numbers quite a bit already, so it makes sense that one of the default types would be **numeric**. 
+
+In `R`, if something is "numeric", then it refers to anything that is a number. However, we can actually be more specific than this. Values that include decimals are referred to as **doubles**.
+
+Doubles get their name from how computers store numbers in memory. You can read more about that [here](https://en.wikipedia.org/wiki/Double-precision_floating-point_format).
+
+---
+
+class: content-slide
+
+# Data types
+
+## Numeric (integers)
+
+**Integers** are also a more specific type of double. These are any numeric values that do not have decimals. `R` does work behind the scenes to make a best guess as to whether or not you intend to work with doubles or with integers unless you explicitly coerce your values to be one or the other.
+
+Consider the differences between two lists of numbers that we made earlier: `lost_numbers` and `transcendental_numbers`.
+
+There are a range of functions that help us to understand and work with our data types. We'll be using some of those to explore the differences between these sets of numbers.
+
+---
+
+class: content-slide
+
+# Data types
+
+## Numeric (integers)
+
+First, let's look at `lost_numbers`. We know that integers do not have decimals and doubles do have decimals. We can check the type of data in the list with the cleverly named `typeof` function.
+
+
+```r
+typeof(lost_numbers)
+```
+
+Interestingly, `R` has guessed that this list is of type `double`.
+
+---
+
+class: content-slide
+
+# Data types
+
+## Numeric (integers)
+
+Another way to see this is by using one of the `is.*` functions. This set of functions answers the question "is this object of the type that I am checking it against?" So for example `is.double` would check if an object is a double and `is.integer` would check if an object is an integer. `is.numeric` is a bit of a special function that will return `TRUE` if the object is either a double or an integer.
+
+
+```r
+is.double(lost_numbers)
+is.integer(lost_numbers)
+is.numeric(lost_numbers)
+```
+
+---
+
+class: content-slide
+
+# Data types
+
+## Numeric (integers)
+
+Related to the `is.*` functions are the `as.*` functions. Instead of checking for a specific data type, the `as.*` functions coerce values into the data type that you specify. For example, we could coerce our `lost_numbers` object into a integers as opposed to doubles.
+
+
+```r
+# We're going to overwrite our original object
+lost_numbers &lt;- as.integer(lost_numbers)
+
+# We can demonstrate that lost_numbers has been coerced to integers
+typeof(lost_numbers)
+is.integer(lost_numbers)
+
+# And, of course, it is still TRUE that the object is numeric
+is.numeric(lost_numbers)
+```
+
+---
+
+class: content-slide
+
+# Data types
+
+## Numeric (integers)
+
+The `is.*` and `as.*` are extremely useful functions that you will use many times as you solve problems with `R`.
+
+What if you wanted to explicitly define a list of numbers as integers as opposed to needing to coerce your values using the `as.integer` function? How could you differentiate between `1` as a double and `1` as an integer?
+
+To do that, you you can use the suffix `L`.
+
+
+```r
+is.integer(1)
+is.integer(1L)
+
+typeof(1L:10L)
+typeof(1:10L)
+typeof(1L:10)
+```
+
+---
+
+class: content-slide
+
+# Data types
+
+## Logical
+
+We have worked with logical values every time we evaluated a conditional statement. Logicals are `TRUE` and `FALSE`.
+
+
+```r
+set.seed(112)
+random_logicals &lt;- runif(137, 0, 1) &lt; .5
+```
+
+```r
+typeof(random_logicals)
+is.logical(random_logicals)
+```
+
+---
+
+class: content-slide
+
+# Data types
+
+## Logical
+
+A very convenient property of `TRUE` and `FALSE` is that they evaluate to `1` and `0` respectively. That means that we can do things like:
+
+
+```r
+sum(random_logicals)
+mean(random_logicals)
+```
+
+---
+
+class: content-slide
+
+# Data types
+
+## Logical
+
+In fact, notice what happens when we apply the `as.integer` function to `random_logicals`.
+
+
+```r
+as.integer(random_logicals)
+```
+
+```
+##   [1] 1 0 0 0 1 1 1 0 1 1 1 1 0 0 0 0 0 0 0 1 1 0 1 1 1 1 0 1 1 0 0 0 0 1 1 1 1
+##  [38] 0 0 1 0 0 0 0 0 1 1 1 1 0 1 1 1 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 1 1 0 0 0
+##  [75] 0 1 0 1 0 1 0 1 1 1 1 0 0 1 0 1 0 0 0 0 1 0 0 1 0 0 0 1 0 1 1 1 0 1 1 0 1
+## [112] 1 1 0 0 0 1 1 1 0 1 0 1 0 1 0 0 0 0 0 0 0 1 1 1 0 0
+```
+
+---
+
+class: content-slide
+
+# Data types
+
+## Character
+
+So far, we have only worked with values that are either logical or numeric. However, data is very frequently communicated with **characters**. These are often referred to as **strings** as well. We will spend more time focused on working with these data types in later weeks of the course. For now, it is helpful to know how to identify them.
+
+An object is considered a character when it is encapsulated by quotation marks. For example, `"September"` would be considered a character.
+
+
+```r
+months_of_the_year &lt;- c("January", "February", "March", "April", "May", "June",
+                        "July", "August", "September", "October", "November", "December")
+
+typeof(months_of_the_year)
+is.character(months_of_the_year)
+```
+
+---
+
+class: content-slide
+
+# Data types
+
+## Character
+
+We previously mentioned the idea of "coercion" - one data type being forced into another. The character data type is the end of the road for coercion:
+
+`logical` → `integer` → `numeric` → `character`
+
+---
+
+class: content-slide
+
+# Data types
+
+## Complex
+
+If you remember back to you algebra coursework in high school, you will recall working with imaginary numbers ($i =\sqrt{-1}$) and then, eventually, complex numbers($z = a + bi$). Complex numbers are numbers that include a real and imaginary part. We will not be working with complex numbers in this course, though they are extremely important to understand for specific industries.
+
+
+```r
+complex_numbers &lt;- c(1 + 2i, 3 - 4i, -5 + 6i, -7 - 8i)
+
+typeof(complex_numbers)
+is.complex(complex_numbers)
+
+# Another way to do it create complex numbers
+complex(real = 1, imaginary = 2)
+```
+
+---
+
+class: content-slide
+
+# Data types
+
+## Raw
+
+The last data type is one that we will almost certainly not work with in this course - **raw**. As it sounds, the raw data type refers to raw bytes of data. I have had to utilize the raw data type one time in the years that I have utilized `R`. Specifically, it helped me to ingest data that included strange encodings because it came from a foreign country. Converting it to raw allowed me to bypass an error that I had encountered.
+
+The output of these functions are the literal hexadecimal values that your computer is using to store the values in memory.
+
+
+```r
+as.raw(40)
+
+charToRaw("A test string")
+```
+
+---
+
+class: content-slide
+
+# Data structures
+
+When discussing the `c` function, we briefly discussed **vectors** and **lists**. These are two of the data structures that you will become comfortable working with while coding with R.
+
+Generally, you can think of data structures as the intersection of two ideas: **dimensionality** and **heterogeneity**.
+
+| Dimensionality | Homogeneous   | Heterogenous |
+|----------------|---------------|--------------|
+| 1D             | Atomic vector | List         |
+| 2D             | Matrix        | Data frame   |
+| ND             | Array         |              |
+
+In this course, you will frequently work with vectors, lists, and data frames. We will not work with matrices or arrays.
+
+---
+
+class: content-slide
+
+# Data structures
+
+## Vectors
+
+Vectors are collections of values that are all of the same data type. When we consider dimensionality and heterogeneity, we could describe vectors as being 1-dimensional, homogenous objects. This is the most basic data structure in `R`. You used a vector every time you used the `:` operator or the `c` function.
+
+
+```r
+dbl_vec &lt;- c(2, 3, 2.5, 9, 7.3)
+int_vec &lt;- 1L:7L
+log_vec &lt;- c(TRUE, FALSE, T, F)
+chr_vec &lt;- c("I", "can't", "believe", "it's", "not", "butter")
+```
+
+```r
+typeof(dbl_vec); is.atomic(dbl_vec)
+typeof(int_vec); is.atomic(int_vec)
+typeof(log_vec); is.atomic(log_vec)
+typeof(chr_vec); is.atomic(chr_vec)
+```
+
+---
+
+class: content-slide
+
+# Data structures
+
+## Vectors
+
+If we concatenate multiple vectors together, then we still end up with a 1-dimensional object. The vectors are "flattened" together.
+
+
+```r
+concat_vec &lt;- c(dbl_vec, top_ten)
+```
+
+--
+
+This flattening will also occur when we have vectors of different data types. The data type of the final vector will be dictated by the coercion rules discussed previously.
+
+
+```r
+coerce_vec &lt;- c(log_vec, dbl_vec)
+coerce_vec_again &lt;- c(log_vec, chr_vec)
+coerce_yet_again &lt;- c(dbl_vec, log_vec, int_vec, chr_vec)
+```
+
+---
+class: content-slide
+
+# Data structures
+
+## Lists
+
+Lists are similar to vectors with one major exception - they can contain multiple data types as opposed to only a single data type. They are 1-dimension, heterogenous objects.
+
+
+```r
+combined_list &lt;- list(log_vec, dbl_vec)
+combined_list_again &lt;- list(log_vec, chr_vec)
+combined_yet_again &lt;- list(dbl_vec, log_vec, int_vec, chr_vec)
+```
+
+--
+
+One other major difference between lists and vectors is that lists can be *recursive*. By that, we mean that lists can contain lists...which themselves can contain lists...which themselves can contain lists...ad infinitum.
+
+
+```r
+recursive_list &lt;- list(combined_list, 1:10)
+
+more_recursive_list &lt;- list(combined_list, combined_list_again, combined_yet_again, recursive_list)
+```
+
+---
+
+class: content-slide
+
+# Data structures
+
+## Matrices
+
+Moving up a level of dimensionality brings us to matrices. Matrices are similar to vectors in that they can only include data of a single type. The difference is that they are 2-dimensional as opposed to 1-dimensional.
+
+Matrices are extremely important for predictive analytics, machine learning, and artificial intelligence. They are the backbone of all of these skillsets. We will not be working with matrices in this course, but it is important to understand that they exist.
+
+
+```r
+one_hundred_matrix &lt;- matrix(1:100, nrow = 10, ncol = 10)
+```
+
+---
+
+class: content-slide
+
+# Data structures
+
+## Data frames
+
+Data frames are the bread and butter of the work that we will be doing in this course. These are 2-dimensional, heterogenous data structures. From a practical perspective, data frames are composed of multiple vectors of the same length.
+
+
+```r
+months_df &lt;- 
+  data.frame(months = months_of_the_year,
+             month_number = 1:12)
+```
+
+```
+## Error in data.frame(months = months_of_the_year, month_number = 1:12): object 'months_of_the_year' not found
+```
+
+---
+
+class: content-slide
+
+# Data structures
+
+## Data frames
+
+One of the most common mistakes that people make when getting started with working with data frames is that they will try to use vectors of different lengths to create a data frame.
+
+
+```r
+data.frame(months = months_of_the_year,
+           month_number = 1:11)
+```
+
+```
+## Error in data.frame(months = months_of_the_year, month_number = 1:11): object 'months_of_the_year' not found
+```
+
+---
+
+class: content-slide
+
+# Basic Project Workflow
+
+You've created your first R markdown file. Now you need to start thinking about workflows to make your code repeatable. The absolute most basic way to do that is by saving your code.
+
+## Saving files
+
+Saving in `R` works just like it does in nearly any other program or application that you've used. You can go to `File &gt; Save` or `File &gt; Save As...` in your menu. You can also use the appropriate shortcut to save, `⌘ + S`. Your R markdown files will automatically have the extension of `.rmd` while your R script files will automatically have the extension of `.R`.
+
+---
+
+class: content-slide
+
+# Basic Project Workflow
+
+## Saving files
+
+The mechanics of saving files in `R` are not complicated. There are some best practices for naming your files, though:
+
+-   Give your files meaningful names! You want to future proof your files with meaningful names so that you or your colleagues can get a sense of what they do in the future.
+
+-   Avoid spaces in file names. They work, but you're best off using `-` or `_` in their place. This will make some small things easier later.
+
+-   If your files are part of a sequence, give them numeric prefixes to indicate the order. Much better to call your files `01_load_packages.R` than just `load_packages.R`. Once again, you'll be making life easier for you and your colleagues in the future.
+
+---
+
+class: content-slide
+
+# Basic Project Workflow
+
+## Creating projects
+
+Each time you do work with `R`, you'll want to consider utilizing the concept of a "project" to organize your code. `.Rproject` files are a simple text file that you add to the root of the directory where you are storing your work. This is a simple way to tell `R` that *this* is where your work starts. This will be extremely helpful later on as your work grows in complexity.
+
+You can add a `.Rproject` file by navigating to `File &gt; New project`. There are plenty of options for how to set up your projects. We'll worry about that later.
+
+---
+
+class: content-slide
+
+# Git
+
+**Think of git as being like an extremely slow, intentional version of a Google document.**
+
+- Git is a version control system that gives you control over different versions of your code.
+- In some ways, Git is to GitHub as R is to RStudio.
+
+Git is the number one thing on my list of "stuff I wish I knew before I started working". It is a separate skill from `R`, but one that makes working with a team *much, much* easier.
+
+.pull-left[&lt;br&gt;&lt;br&gt;&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/1280px-Git-logo.svg.png" alt="Git logo" style="width:400px" class="center"&gt;]
+
+.pull-right[&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;img src="https://GitHub.GitHubassets.com/images/modules/logos_page/GitHub-Logo.png" alt="GitHub logo" style="width:400px;" class="center"&gt;]
+
+---
+
+class: content-slide
+
+# Git
+
+We'll spend more time throughout the course working with git and getting a better understanding for it.
+
+As of now you should have:
+
+-   Made a profile on [GitHub](GitHub.com)
+-   Made sure that you have access to the GitHub repository for our course
+-   Successfully installed git on your computer
+
+We'll be using [*Happy Git and GitHub for the useR*](https://happygitwithr.com/) throughout this course to slowly grow our git skills.
+
+---
+
+class: content-slide
+
+# Git
+
+Tonight we'll do a few things to get you started with using git:
+
+1. **Connect** your local machine to your remote account on GitHub
+2. **Fork** your own version of the `week_01` homework repository
+3. **Clone** the forked repository to your local machine
+
+---
+
+class: content-slide
+
+# Git
+
+## Remote vs. Local
+
+.left-column[
+**Remote repositories** are hosted on a server accessible by all team members. In our case, that's GitHub.
+
+**Local repositories** reside on the computers of team members.
+]
+
+.right-column[&lt;img src="https://res.cloudinary.com/hy4kyit2a/f_auto,fl_lossy,q_70/learn/projects/develop-app-with-salesforce-cli-and-source-control/add-salesforce-dx-project-to-source-control/images/bf546ec3acd964673bf5f6302125fd93_step-4-github-and-git-clones.png" alt="Remote vs. Local Diagram" style="width:600px"&gt;]
+
+---
+
+class: content-slide
+
+# Git
+
+## 🤝 Introduce yourself to Git
+
+We're following along with [Happy Git with R](https://happygitwithr.com/hello-git.html)
+
+1. Open up your Terminal (Mac) or Git Bash (PC).
+
+2. Enter the following commands:
+
+```
+git config --global user.name 'Jane Doe'
+git config --global user.email 'jane@example.com'
+git config --global --list
+```
+
+---
+
+class: content-slide
+
+# Git
+
+## 🍽 Fork a repository 
+
+1. Navigate to our [course organization on GitHub](https://github.com/UD-PCS-Foundations-of-R-Fall-2021)
+
+2. Go to the [`week_01`](https://github.com/UD-PCS-Foundations-of-R-Fall-2021/week_01) repository
+
+3. Select `Fork` in the upper right hand corner
+
+4. Select your personal profile to fork the code to. This is likely the only option you'll have!
+
+5. A new version of the code repository will now exist on your personal GitHub account. It will be named `&lt;your_user_name&gt;/week_01`
+
+6. You have successfully forked the repository!
+
+---
+
+class: content-slide
+
+# Git
+
+## 🐑 Clone the repository 
+
+1. Determine where you want the repository to live on your local machine. I'd recommend the directory (aka "folder") that you'll be using for class.
+
+2. We'll use basic Unix commands to navigate to this location by using Terminal (Mac) or Git Bash (PC).
+    - Use `cd` to "change directories" and navigate to the appropriate repository.
+    - Use `ls` to "list" the files and directories in your current folder. This can be extremely helpful!
+    
+3. On GitHub, navigate to the green `Code` dropdown button. Copy the link that it lists here.
+
+4. Go back to your terminal. Type: `git clone &lt;paste_the_link_you_just_copied&gt;`
+
+5. Voila! The code from the remote repository on GitHub should now exist as a local repository on your machine.
+
+---
+
+class: content-slide
+
+# Closing Thoughts
+
+## Homework
+
+Your homework assignment should now be on your local machine.
+
+Complete your assignment in the `Week_01_Assignment.Rmd` file.
+
+In normal weeks, your homework will be due by 5:59 pm on the day of the next class (i.e., this would normally be due 10/4 at 5:59 pm).
+
+For this week, we'll submit your assignment together at the beginning of the next class.
+
+---
+
+class: content-slide
+
+# Closing Thoughts
+
+## Slack
+
+.pull-left[We'll be using Slack for communication throughout the course.
+
+Slack is broken up into "channels", which you'll be able to see on the left hand side of the screen.
+
+You can also direct message people - also on the left hand side of the screen.
+
+If you're running into any git trouble - now or throughout the course - try leaving a message in the **`help_git`** channel.]
+
+.pull-right[&lt;img src="images/Slack.png" alt="Slack screenshot" style="width:600px" class="rounded-corners"&gt;]
+
+---
+
+class: title-slide, middle
+layout: false
+
+# Foundations of R for Data Analysis
+
+### Week 01: Understanding the R Programming Environment
+
+Ryan Harrington&lt;br&gt;
+September 27, 2021&lt;br&gt;
+University of Delaware&lt;br&gt;
+College of Professional &amp; Continuing Studies
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%/%total%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
