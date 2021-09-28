@@ -1,0 +1,259 @@
+---
+title: "Week 01 Class Examples"
+author: "Ryan Harrington"
+date: "9/27/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+2 + 4
+```
+
+```{r}
+1 - 4
+```
+
++
+-
+*
+/
+()
+^
+
+```{r}
+7 * 2
+9 / 3
+8 + 4 - 3
+6 / (1 + 2)
+(5 + 3) / 2 ^ 4
+```
+
+```{r}
+1:10
+```
+
+name_of_the_object <- code
+
+```{r}
+top_ten <- 1:10
+```
+
+```{r, eval=FALSE}
+snake_case
+names.with.periods
+CamelCase
+```
+
+```{r}
+top_ten / 3
+```
+
+```{r}
+top_ten - 3
+top_ten ^ 2
+```
+
+Make an object called `top_ten_reversed`
+Assign the numbers from to 10 to 1
+
+```{r}
+top_ten_reversed <- 10:1
+```
+
+```{r}
+top_ten_reversed
+```
+
+```{r}
+21:72
+```
+
+```{r}
+10:1
+```
+
+```{r}
+-3:-8
+```
+
+```{r}
+TRUE
+T
+
+FALSE
+F
+```
+
+>
+<
+>=
+<=
+==
+
+```{r}
+value <- 6 + 3
+```
+
+```{r}
+value < 5
+value > 3 ^ 2
+value <= 10
+value >= 10
+```
+
+```{r}
+top_ten / value
+
+top_ten < value
+
+top_ten == value
+```
+
+This is text.
+
+```{r}
+# This is a comment
+new_value <- 8 - 7
+
+new_value              # this is a new value new_value
+value                  # here's another value
+```
+
+```{r}
+sqrt(value)
+
+abs(-7)
+```
+
+vignette
+
+mean
+median
+min
+max
+standard deviation
+variance
+
+```{r}
+mean(top_ten)
+median()
+min()
+max()
+sd()
+var()
+```
+
+```{r}
+assignment_with_equal_sign = -3 ^ 2
+```
+
+```{r}
+lost_numbers <- c(4, 8, 15, 16, 23, 42)
+jennys_numbers <- c(8, 6, 7, 5, 3, 0, 9)
+
+transcendental <- c(pi, 1.618, 2.713, sqrt(2), 4)
+
+new_sequence <- c(1:10, jennys_numbers)
+
+newer_sequence <- c(lost_numbers, jennys_numbers, new_value)
+```
+
+```{r}
+all_sequences <- c(lost_numbers, jennys_numbers, transcendental)
+```
+
+From 2
+To 50
+By 2
+
+```{r}
+seq(from = 2, 
+    to = 50, 
+    by = 2)
+```
+
+```{r}
+typeof(lost_numbers)
+
+is.double(lost_numbers)
+is.integer(lost_numbers)
+is.numeric(lost_numbers)
+```
+
+Coercion
+
+```{r}
+lost_numbers <- as.integer(lost_numbers)
+
+is.double(lost_numbers)
+is.integer(lost_numbers)
+is.numeric(lost_numbers)
+```
+
+```{r}
+lost_numbers_again <- c(4L, 8L, 15L, 16L, 23L, 42L)
+
+typeof(lost_numbers_again)
+```
+
+```{r}
+set.seed(112)
+random_logicals <- runif(n = 137, min = 0, max = 1) < 0.5
+```
+```{r}
+typeof(random_logicals)
+is.logical(random_logicals)
+```
+
+```{r}
+random_logicals
+
+as.integer(random_logicals)
+
+sum(random_logicals)
+```
+
+```{r}
+
+mean(random_logicals)
+
+61 / 137
+```
+
+
+Character vs. String
+
+```{r}
+months_of_the_year <- c("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+```
+
+```{r}
+typeof(months_of_the_year)
+is.character(months_of_the_year)
+```
+
+logicals -> integers -> doubles -> character
+
+```{r}
+c(random_logicals, months_of_the_year)
+```
+
+```{r}
+one_hundred_matrix <- matrix(1:100, nrow = 10, ncol = 10)
+```
+
+```{r}
+months_df <- 
+  data.frame(Months = months_of_the_year,
+             Number = 1:12)
+```
+
+```{r}
+data.frame(Months = months_of_the_year,
+           Number = 1:11)
+```
+
