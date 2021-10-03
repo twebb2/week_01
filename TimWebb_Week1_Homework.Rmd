@@ -1,0 +1,103 @@
+---
+title: "Week 1 Homework"
+author: "Tim Webb"
+date: "10/3/2021"
+output: html_document
+---
+title: "Week 01 Assignment"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### Exercises
+
+1.  Explain coercion rules. Create an example that demonstrates the fixed order of the coercion rules.
+
+Coercion rules allow us to assign specifc data types to fields.  For instance, numbers can be integers or double (with decimals), numeric (either) or strings.  In some cases we may want to convert the defined variable type and this is where coercion comes into play. Is statement checks the defined type, as converts with coercion.  The fixed order is 
+
+logicals -> integers -> doubles -> character
+
+```{r}
+
+Q1 <- c(2.1, 4.2, 6.3, 8.4, 10.5)
+
+typeof(Q1)
+is.double(Q1)
+
+Q1_1 <- as.integer(Q1)
+typeof(Q1_1)
+is.integer(Q1_1)
+```
+
+2.  The following code will generate a warning. Explain why.
+
+```{r}
+as.integer(c("one", "two", "three"))
+```
+The error produced is NAs introduced by coercion.  We are trying to create a column with string variables (characters) and when we assign it as integers R does not know what to do so instead it puts NA (not applicable)
+
+
+3.  Create a vector of a sequence of integers starting at 2, ending at 100, and increasing by 2. Assign the vector to an object called `evens`. Coerce the vector to be of type `integer`. Confirm that the vector is of type `integer`.
+
+```{r}
+
+evens <- seq(from = 2, to = 100, by = 2)
+
+typeof(evens)
+
+evens <- as.integer(evens)
+typeof(evens)
+is.integer(evens)
+
+```
+
+4.  Create a vector of random numbers with a length equal to your vector in exercise 3. Use a seed with a value of 730 before creating your vector. Assign the vector to an object called `randoms`. Confirm the type of the vector.
+
+```{r}
+set.seed(730)
+
+randoms <- runif(n = 50, min = 0, max = 1)
+
+typeof(randoms)
+
+```
+
+5.  Create a vector demonstrating which values in exercise 3 are greater than `0.75`. Assign the vector to an object called `logicals`. Confirm the type of the vector.
+
+```{r}
+
+logicals <- randoms > 0.75
+
+typeof(logicals)
+```
+
+6.  Create a data frame including the three vectors created in exercises 3 through 5. Assign it to an object following best practices for naming.
+
+```{r}
+
+HW_df <- data.frame(count = 1:50, evens, randoms, logicals)
+
+```
+
+7.  Create a new object which is the sum of `evens` and `randoms` all divided by 3. Demonstrate how to calculate basic summary statistics for this new object (mean, median, minimum, maximum, standard deviation, variance).
+
+```{r}
+
+Combined <- c((evens+randoms)/3)
+
+```
+
+8.  We discussed the idea that R is a "vectorized" language. Explain this concept. Why is it important?
+
+Vectorized language is different from python or SAS because it utilizes functional programming.  In other words functions will operate across a whole vector, not needing to create loops to sequentially make changes across an entire vector.  This has advantages because it may be less error prone.
+
+9.  Run the `sessionInfo` function in a chunk.
+
+```{r}
+
+sessionInfo()
+
+```
